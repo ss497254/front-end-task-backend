@@ -4,7 +4,7 @@ const cors = require("cors");
 
 const app = express();
 
-const bucketPath = (bucket) => `./App/buckets/${bucket}.json`;
+const bucketPath = (bucket) => `./log/buckets/${bucket}.json`;
 
 app.use(cors());
 app.use(express.json());
@@ -21,7 +21,7 @@ app.get("/", (_, res) => {
 app.get("/buckets", (_, res) => {
     res.send(
         fs
-            .readdirSync("./App/buckets")
+            .readdirSync("./log/buckets")
             .map((bucket) => ({ name: bucket.replace(".json", "") }))
     );
 });
